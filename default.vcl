@@ -23,15 +23,15 @@ sub vcl_recv {
     
     if (req.http.host ~ "[ONE_DOMAIN]" && !req.url  ~ "^/hi/|^/hi") {
        
-       set req.backend = [ONE_BACKEND];
+       set req.backend_hint = [ONE_BACKEND];
        
     } elseif (req.http.host ~ "[ANOTHER_DOMAIN]" && req.url  ~ "^/hi/|^/hi") {
       
-      set req.backend = [ANOTHER_BACKEND]; 
+      set req.backend_hint = [ANOTHER_BACKEND]; 
       
     } else {
       
-      set req.backend = default;
+      set req.backend_hint = default;
       
     }
 
