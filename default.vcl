@@ -81,7 +81,7 @@ sub vcl_recv {
 
     }
 
-    if (req.url !~ "(wp-admin/admin-ajax.php|\?wc-ajax=checkout|finalizar*|wp-admin*|myaccess|wp-login.php|wc-api/v3/*|area-de-usuario/*|adminer*|finalizar-compra*|carro*|mi-cuenta*)") {
+    if (req.url !~ "(\.git-ftp\.log|wp-admin/admin-ajax.php|\?wc-ajax=checkout|finalizar*|wp-admin*|myaccess|wp-login.php|wc-api/v3/*|area-de-usuario/*|adminer*|finalizar-compra*|carro*|mi-cuenta*)") {
 
         unset req.http.cookie;
 
@@ -142,7 +142,7 @@ sub vcl_backend_response {
     # Remove Vary header response. Only if theme is browser-agnostic or responsive.
     unset beresp.http.Vary;
 
-    if (! bereq.url ~ "(wp-admin/admin-ajax.php|\?wc-ajax=checkout|finalizar*|wp-admin*|myaccess|wp-login.php|wc-api/v3/*|area-de-usuario/*|adminer*|finalizar-compra|carro*|mi-cuenta*)") {
+    if (! bereq.url ~ "(\.git-ftp\.log|wp-admin/admin-ajax.php|\?wc-ajax=checkout|finalizar*|wp-admin*|myaccess|wp-login.php|wc-api/v3/*|area-de-usuario/*|adminer*|finalizar-compra|carro*|mi-cuenta*)") {
 
         unset beresp.http.cookie;
         unset beresp.http.Set-Cookie;
